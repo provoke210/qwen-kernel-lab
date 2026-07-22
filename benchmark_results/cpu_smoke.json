@@ -1,0 +1,67 @@
+{
+  "environment": {
+    "torch": "2.5.1+cpu",
+    "device": "cpu",
+    "device_name": "CPU",
+    "dtype": "float32",
+    "native_extension": false
+  },
+  "cases": [
+    {
+      "name": "decode_b1",
+      "shape": [
+        1,
+        1,
+        896
+      ],
+      "add_rms_norm_reference_us": 47.7,
+      "add_rms_norm_native_us": 42.0,
+      "add_rms_norm_speedup": 1.136,
+      "silu_mul_reference_us": 14.5,
+      "silu_mul_native_us": 13.3,
+      "silu_mul_speedup": 1.09
+    },
+    {
+      "name": "decode_b8",
+      "shape": [
+        8,
+        1,
+        896
+      ],
+      "add_rms_norm_reference_us": 83.1,
+      "add_rms_norm_native_us": 81.3,
+      "add_rms_norm_speedup": 1.022,
+      "silu_mul_reference_us": 55.1,
+      "silu_mul_native_us": 51.3,
+      "silu_mul_speedup": 1.074
+    },
+    {
+      "name": "prefill_128",
+      "shape": [
+        1,
+        128,
+        896
+      ],
+      "add_rms_norm_reference_us": 209.9,
+      "add_rms_norm_native_us": 228.1,
+      "add_rms_norm_speedup": 0.92,
+      "silu_mul_reference_us": 282.0,
+      "silu_mul_native_us": 231.0,
+      "silu_mul_speedup": 1.221
+    },
+    {
+      "name": "prefill_512",
+      "shape": [
+        1,
+        512,
+        896
+      ],
+      "add_rms_norm_reference_us": 280.6,
+      "add_rms_norm_native_us": 295.5,
+      "add_rms_norm_speedup": 0.95,
+      "silu_mul_reference_us": 1958.6,
+      "silu_mul_native_us": 1538.6,
+      "silu_mul_speedup": 1.273
+    }
+  ]
+}

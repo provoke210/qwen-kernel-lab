@@ -1,0 +1,105 @@
+{
+  "environment": {
+    "torch": "2.13.0+cu126",
+    "cuda": "12.6",
+    "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "model": "Qwen/Qwen2.5-0.5B",
+    "dtype": "torch.float16",
+    "attention": "sdpa",
+    "batch_size": 1,
+    "new_tokens": 128,
+    "warmup": 2,
+    "paired_runs": 6,
+    "patched_mlp_modules": 24,
+    "peak_memory_mb": 2219.65
+  },
+  "cases": [
+    {
+      "baseline": {
+        "ttft_ms": 32.35,
+        "prefill_tokens_per_s": 3957.0645,
+        "decode_ms": 4296.0562,
+        "decode_tokens_per_s": 29.5918,
+        "e2e_ms": 4332.9836,
+        "output_tokens_per_s": 29.572
+      },
+      "native_mlp": {
+        "ttft_ms": 32.6432,
+        "prefill_tokens_per_s": 3921.1957,
+        "decode_ms": 4110.1752,
+        "decode_tokens_per_s": 30.9,
+        "e2e_ms": 4151.5352,
+        "output_tokens_per_s": 30.8324
+      },
+      "speedup": {
+        "ttft": 0.991,
+        "decode": 1.0442,
+        "e2e": 1.0426
+      },
+      "correctness": {
+        "max_abs_first_logits": 0.023681640625,
+        "mean_abs_first_logits": 0.0050901989452540874,
+        "generated_tokens_equal": true
+      },
+      "prompt_length": 128
+    },
+    {
+      "baseline": {
+        "ttft_ms": 56.1719,
+        "prefill_tokens_per_s": 9119.6896,
+        "decode_ms": 4114.7081,
+        "decode_tokens_per_s": 30.8657,
+        "e2e_ms": 4176.6707,
+        "output_tokens_per_s": 30.6469
+      },
+      "native_mlp": {
+        "ttft_ms": 57.1656,
+        "prefill_tokens_per_s": 8977.9469,
+        "decode_ms": 4047.0128,
+        "decode_tokens_per_s": 31.3925,
+        "e2e_ms": 4100.4391,
+        "output_tokens_per_s": 31.2274
+      },
+      "speedup": {
+        "ttft": 0.9826,
+        "decode": 1.0171,
+        "e2e": 1.0189
+      },
+      "correctness": {
+        "max_abs_first_logits": 0.03515625,
+        "mean_abs_first_logits": 0.006479250732809305,
+        "generated_tokens_equal": true
+      },
+      "prompt_length": 512
+    },
+    {
+      "baseline": {
+        "ttft_ms": 85.8322,
+        "prefill_tokens_per_s": 11957.5591,
+        "decode_ms": 4466.6526,
+        "decode_tokens_per_s": 28.4367,
+        "e2e_ms": 4552.3953,
+        "output_tokens_per_s": 28.1195
+      },
+      "native_mlp": {
+        "ttft_ms": 86.3926,
+        "prefill_tokens_per_s": 11885.1904,
+        "decode_ms": 4313.4104,
+        "decode_tokens_per_s": 29.4481,
+        "e2e_ms": 4421.4473,
+        "output_tokens_per_s": 28.9539
+      },
+      "speedup": {
+        "ttft": 0.9935,
+        "decode": 1.0356,
+        "e2e": 1.0297
+      },
+      "correctness": {
+        "max_abs_first_logits": 0.015625,
+        "mean_abs_first_logits": 0.0028773208614438772,
+        "generated_tokens_equal": true
+      },
+      "prompt_length": 1024
+    }
+  ]
+}

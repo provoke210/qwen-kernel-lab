@@ -1,0 +1,67 @@
+{
+  "environment": {
+    "torch": "2.13.0+cu126",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "dtype": "float16",
+    "native_extension": true
+  },
+  "cases": [
+    {
+      "name": "decode_b1",
+      "shape": [
+        1,
+        1,
+        896
+      ],
+      "add_rms_norm_reference_us": 359.31,
+      "add_rms_norm_native_us": 88.148,
+      "add_rms_norm_speedup": 4.076,
+      "silu_mul_reference_us": 111.2,
+      "silu_mul_native_us": 59.061,
+      "silu_mul_speedup": 1.883
+    },
+    {
+      "name": "decode_b8",
+      "shape": [
+        8,
+        1,
+        896
+      ],
+      "add_rms_norm_reference_us": 301.221,
+      "add_rms_norm_native_us": 65.96,
+      "add_rms_norm_speedup": 4.567,
+      "silu_mul_reference_us": 101.391,
+      "silu_mul_native_us": 63.459,
+      "silu_mul_speedup": 1.598
+    },
+    {
+      "name": "prefill_128",
+      "shape": [
+        1,
+        128,
+        896
+      ],
+      "add_rms_norm_reference_us": 430.871,
+      "add_rms_norm_native_us": 71.352,
+      "add_rms_norm_speedup": 6.039,
+      "silu_mul_reference_us": 76.808,
+      "silu_mul_native_us": 72.866,
+      "silu_mul_speedup": 1.054
+    },
+    {
+      "name": "prefill_512",
+      "shape": [
+        1,
+        512,
+        896
+      ],
+      "add_rms_norm_reference_us": 396.823,
+      "add_rms_norm_native_us": 80.196,
+      "add_rms_norm_speedup": 4.948,
+      "silu_mul_reference_us": 133.189,
+      "silu_mul_native_us": 107.587,
+      "silu_mul_speedup": 1.238
+    }
+  ]
+}

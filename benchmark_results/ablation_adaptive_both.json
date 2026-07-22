@@ -1,0 +1,49 @@
+{
+  "environment": {
+    "torch": "2.13.0+cu126",
+    "cuda": "12.6",
+    "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "model": "Qwen/Qwen2.5-0.5B",
+    "dtype": "torch.float16",
+    "attention": "sdpa",
+    "batch_size": 1,
+    "new_tokens": 64,
+    "warmup": 2,
+    "paired_runs": 4,
+    "fusion": "both",
+    "patched_mlp_modules": 24,
+    "patched_decoder_modules": 24,
+    "peak_memory_mb": 1949.61
+  },
+  "cases": [
+    {
+      "baseline": {
+        "ttft_ms": 34.3691,
+        "prefill_tokens_per_s": 3724.4181,
+        "decode_ms": 2173.6371,
+        "decode_tokens_per_s": 28.9961,
+        "e2e_ms": 2208.0061,
+        "output_tokens_per_s": 28.9974
+      },
+      "native_fused": {
+        "ttft_ms": 35.2018,
+        "prefill_tokens_per_s": 3637.7244,
+        "decode_ms": 2146.7495,
+        "decode_tokens_per_s": 29.3473,
+        "e2e_ms": 2182.0543,
+        "output_tokens_per_s": 29.3306
+      },
+      "speedup": {
+        "ttft": 0.9763,
+        "decode": 1.0121,
+        "e2e": 1.0115
+      },
+      "correctness": {
+        "max_abs_first_logits": 0.01953125,
+        "mean_abs_first_logits": 0.0034070212859660387,
+        "generated_tokens_equal": true
+      },
+      "prompt_length": 128
+    }
+  ]
+}
